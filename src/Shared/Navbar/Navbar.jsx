@@ -1,14 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+
+    const {user,logOut} = useContext(AuthContext)
+const handleLogout = () =>{
+logOut()
+.then()
+.catch(error => console.error(error))
+}
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to='/about'>About Us</NavLink></li>
         <li><NavLink to='/services'>Services</NavLink></li>
         <li><NavLink to='/blog'>Blog</NavLink></li>
         <li><NavLink to='/contact'>Contact</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+     
+        {user?.email ? <>
+            <li><NavLink to='/allcheckouts'>All Checkout</NavLink></li>
+            <li><button onClick={handleLogout}>Log Out</button ></li>
+        </> : 
+        
+        
+        <li><NavLink to='/login'>Login</NavLink></li>}
 
 
 

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
 const Service = ({ service }) => {
-    const { title, img, price } = service
+    const {_id, title, img, price } = service
 
     return (
+        <Link to={`/checkout/${_id}`}>
         <div>
             <div className="card h-96 bg-base-100 shadow-xl">
                 <figure><img className="h-72" src={img} alt="" /></figure>
@@ -19,6 +20,7 @@ const Service = ({ service }) => {
                 </div>
             </div>
         </div>
+        </Link>
     );
 };
 
